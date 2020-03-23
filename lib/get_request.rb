@@ -17,6 +17,3 @@ class GetRequest
    end
    
 end
-
-g = GetRequest.new.read_data
-binding.pry
