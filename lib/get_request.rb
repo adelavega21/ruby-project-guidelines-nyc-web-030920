@@ -13,7 +13,8 @@ class GetRequest
 
    def read_data
     data = JSON.parse(get_data)
-  
+        
    end
    
 end
+
