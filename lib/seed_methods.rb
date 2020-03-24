@@ -1,3 +1,4 @@
+
 require "net/http"
 def valid_movie(movie)
     if movie["adult"] !=nil && movie["budget"]!=nil && movie["genres"] != nil && movie["revenue"]!=nil && movie["runtime"]!=nil
@@ -8,3 +9,4 @@ def valid_movie(movie)
     end
 end 
 end 
+

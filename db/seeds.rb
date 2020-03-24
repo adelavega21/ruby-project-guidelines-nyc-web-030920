@@ -6,6 +6,7 @@ Movie.destroy_all
 Actor.destroy_all
 Genre.destroy_all
 
+
 latest = RestClient.get("https://api.themoviedb.org/3/movie/latest?api_key=f7aed4cdd4714e239a74cd8b6e37e07f")
 latest_data = JSON.parse(latest)
 latest_id = latest_data["id"]
@@ -20,6 +21,7 @@ i = 3 #movie counter
 # while i < latest_id do #iterate through each movie in the database
     url = "https://api.themoviedb.org/3/movie/popular?api_key=f7aed4cdd4714e239a74cd8b6e37e07f"
 resp = RestClient.get(url)
+
 data = JSON.parse(resp)
 
 data["results"].each do |movie|
