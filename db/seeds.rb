@@ -14,11 +14,9 @@ latest_id = latest_data["id"]
 genre = RestClient.get("https://api.themoviedb.org/3/genre/movie/list?api_key=f7aed4cdd4714e239a74cd8b6e37e07f&language=en-US")
 genre_data = JSON.parse(genre)
 genre_data["genres"].each do |genre|
-    Genre.create(name: genre["name"])
+    Genre.create(name: genre["name"], genre_id: genre["id"])
 end
 
-i = 3 #movie counter
-# while i < latest_id do #iterate through each movie in the database
     url = "https://api.themoviedb.org/3/movie/popular?api_key=f7aed4cdd4714e239a74cd8b6e37e07f"
 resp = RestClient.get(url)
 
@@ -40,6 +38,11 @@ data["results"].each do |movie|
             Actor.create(name: actor["name"])
          end 
         end 
+        movie["genre_ids"].each do |id|
+            GenresMovie.create(movie_id: movie["id"], genre_id: find_genre_id(id))
+        end
     end 
+
+    
        
 

@@ -22,7 +22,13 @@ ActiveRecord::Schema.define(version: 20200324200443) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "genre_id"
+  end
+
+  create_table "genres_movies", force: :cascade do |t|
+    t.integer "genre_id"
+    t.integer "movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
