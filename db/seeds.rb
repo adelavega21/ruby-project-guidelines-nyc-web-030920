@@ -5,7 +5,7 @@ require 'json'
 Movie.destroy_all
 Actor.destroy_all
 Genre.destroy_all
-
+binding.pry
 
 latest = RestClient.get("https://api.themoviedb.org/3/movie/latest?api_key=f7aed4cdd4714e239a74cd8b6e37e07f")
 latest_data = JSON.parse(latest)
@@ -33,6 +33,9 @@ data["results"].each do |movie|
         actor_data = JSON.parse(resp_actor)
 
         actor_data["cast"].each do |actor|
+            #binding.pry
+                ActorMovie.create(actor_id: actor["id"], movie_id:movie["id"])
+            
                 if !(Actor.names.include?(actor["name"]))
             Actor.create(name: actor["name"])
          end 
